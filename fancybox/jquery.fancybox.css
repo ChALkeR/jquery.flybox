@@ -24,18 +24,10 @@
 	margin-top: -20px;
 	margin-left: -20px;
 	cursor: pointer;
-	overflow: hidden;
 	z-index: 1104;
 	display: none;
-}
-
-#fancybox-loading div {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 40px;
-	height: 480px;
-	background-image: url('fancybox.png');
+	background: url('fancybox.png');
+	border-radius: 6px;
 }
 
 #fancybox-overlay {

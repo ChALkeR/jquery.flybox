@@ -759,9 +759,7 @@
 				clearInterval(loadingTimer);
 				return;
 			}
-
-			$('div', loading).css('top', (loadingFrame * -40) + 'px');
-
+			loading.css('background-position', '0px -' + (loadingFrame * 40) + 'px');
 			loadingFrame = (loadingFrame + 1) % 12;
 		};
 
@@ -1024,7 +1022,7 @@
 
 		$('body').append(
 			tmp	= $('<div id="fancybox-tmp"></div>'),
-			loading	= $('<div id="fancybox-loading"><div></div></div>'),
+			loading	= $('<div id="fancybox-loading"></div>'),
 			overlay	= $('<div id="fancybox-overlay"></div>'),
 			wrap = $('<div id="fancybox-wrap"></div>')
 		);
