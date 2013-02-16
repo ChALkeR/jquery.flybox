@@ -226,31 +226,15 @@
 	height: 32px;
 }
 
-#fancybox-title-float-wrap {
-	border: none;
-	border-collapse: collapse;
-	width: auto;
-}
-
-#fancybox-title-float-wrap td {
-	border: none;
-	white-space: nowrap;
-}
-
-#fancybox-title-float-left {
-	padding: 0 0 0 15px;
-	background: url('fancybox.png') -40px -90px no-repeat;
-}
-
-#fancybox-title-float-main {
-	color: #FFF;
-	line-height: 29px;
+#fancybox-title-float {
+	margin-top: 2px;
+	padding: 0 9px;
+	background: #171717;
+	border: 2px solid #fff !important;
+	line-height: 20px;
+	border-radius: 20px;
+	color: #fff;
 	font-weight: bold;
-	padding: 0 0 3px 0;
-	background: url('fancybox-x.png') 0px -40px;
-}
-
-#fancybox-title-float-right {
-	padding: 0 0 0 15px;
-	background: url('fancybox.png') -55px -90px no-repeat;
+	text-align: center;
+	box-shadow: 0px 3px 3px rgba(0,0,0,0.5);
 }
