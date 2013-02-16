@@ -1071,10 +1071,6 @@
 				}
 			});
 		}
-
-		if (!$.support.opacity) {
-			wrap.addClass('fancybox-ie');
-		}
 	};
 
 	$.fn.fancybox.defaults = {
