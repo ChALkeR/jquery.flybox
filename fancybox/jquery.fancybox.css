@@ -211,7 +211,7 @@
 
 #fancybox-title-over {
 	padding: 10px;
-	background-image: url('fancy_title_over.png');
+	background: rgba(0,0,0,0.64);
 	display: block;
 }
 
