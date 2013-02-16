@@ -137,8 +137,6 @@
 	height: 100%;
 	width: 35%;
 	cursor: pointer;
-	outline: none;
-	background: transparent url('blank.gif');
 	z-index: 1102;
 	display: none;
 }
@@ -151,7 +149,7 @@
 	right: 0px;
 }
 
-#fancybox-left-ico, #fancybox-right-ico {
+#fancybox-left > span, #fancybox-right > span {
 	position: absolute;
 	top: 50%;
 	left: -9999px;
@@ -163,12 +161,12 @@
 	display: block;
 }
 
-#fancybox-left-ico {
+#fancybox-left > span {
 	background-image: url('fancybox.png');
 	background-position: -40px -30px;
 }
 
-#fancybox-right-ico {
+#fancybox-right > span {
 	background-image: url('fancybox.png');
 	background-position: -40px -60px;
 }
