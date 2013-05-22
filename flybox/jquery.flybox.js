@@ -52,7 +52,7 @@
 			selectedOpts.width = 'auto';
 			selectedOpts.height = 'auto';
 
-			tmp.html( '<p id="fancybox-error">The requested content cannot be loaded.<br />Please try again later.</p>' );
+			tmp.html( '<p id="flybox-error">The requested content cannot be loaded.<br />Please try again later.</p>' );
 
 			_process_inline();
 		},
@@ -68,7 +68,7 @@
 
 			_abort();
 
-			selectedOpts = $.extend({}, $.fn.fancybox.defaults, (typeof $(obj).data('fancybox') == 'undefined' ? selectedOpts : $(obj).data('fancybox')));
+			selectedOpts = $.extend({}, $.fn.flybox.defaults, (typeof $(obj).data('flybox') == 'undefined' ? selectedOpts : $(obj).data('flybox')));
 
 			ret = selectedOpts.onStart(selectedArray, selectedIndex, selectedOpts);
 
@@ -159,7 +159,7 @@
 
 			tmp.css('padding', (selectedOpts.padding + selectedOpts.margin));
 
-			$('.fancybox-inline-tmp').unbind('fancybox-cancel').bind('fancybox-change', function() {
+			$('.flybox-inline-tmp').unbind('flybox-cancel').bind('flybox-change', function() {
 				$(this).replaceWith(content.children());				
 			});
 
@@ -170,17 +170,17 @@
 				break;
 
 				case 'inline' :
-					if ( $(obj).parent().is('#fancybox-content') === true) {
+					if ( $(obj).parent().is('#flybox-content') === true) {
 						busy = false;
 						return;
 					}
 
-					$('<div class="fancybox-inline-tmp" />')
+					$('<div class="flybox-inline-tmp" />')
 						.hide()
 						.insertBefore( $(obj) )
-						.bind('fancybox-cleanup', function() {
+						.bind('flybox-cleanup', function() {
 							$(this).replaceWith(content.children());
-						}).bind('fancybox-cancel', function() {
+						}).bind('flybox-cancel', function() {
 							$(this).replaceWith(tmp.children());
 						});
 
@@ -192,7 +192,7 @@
 				case 'image':
 					busy = false;
 
-					$.fancybox.showActivity();
+					$.flybox.showActivity();
 
 					imgPreloader = new Image();
 
@@ -232,7 +232,7 @@
 				case 'ajax':
 					busy = false;
 
-					$.fancybox.showActivity();
+					$.flybox.showActivity();
 
 					selectedOpts.ajax.win = selectedOpts.ajax.success;
 
@@ -304,7 +304,7 @@
 			selectedOpts.height = imgPreloader.height;
 
 			$("<img />").attr({
-				'id' : 'fancybox-img',
+				'id' : 'flybox-img',
 				'src' : imgPreloader.src,
 				'alt' : selectedOpts.title
 			}).appendTo( tmp );
@@ -318,7 +318,7 @@
 			loading.hide();
 
 			if (wrap.is(":visible") && false === currentOpts.onCleanup(currentArray, currentIndex, currentOpts)) {
-				$.event.trigger('fancybox-cancel');
+				$.event.trigger('flybox-cancel');
 
 				busy = false;
 				return;
@@ -377,7 +377,7 @@
 						content.html( tmp.contents() ).fadeTo(currentOpts.changeFade, 1, _finish);
 					};
 
-					$.event.trigger('fancybox-change');
+					$.event.trigger('flybox-change');
 
 					content
 						.empty()
@@ -451,7 +451,7 @@
 
 		_format_title = function(title) {
 			if (title && title.length) {
-				return $('<div id="fancybox-title-' + currentOpts.titlePosition + '"></div>').text(title);
+				return $('<div id="flybox-title-' + currentOpts.titlePosition + '"></div>').text(title);
 			}
 			return false;
 		},
@@ -478,7 +478,7 @@
 			}
 
 			title
-				.addClass('fancybox-title-' + currentOpts.titlePosition)
+				.addClass('flybox-title-' + currentOpts.titlePosition)
 				.append( titleElement )
 				.appendTo( 'body' )
 				.show();
@@ -534,11 +534,11 @@
 				$(document).bind('keydown.fb', function(e) {
 					if (e.keyCode == 27 && currentOpts.enableEscapeButton) {
 						e.preventDefault();
-						$.fancybox.close();
+						$.flybox.close();
 
 					} else if ((e.keyCode == 37 || e.keyCode == 39) && currentOpts.enableKeyboardNav && e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA' && e.target.tagName !== 'SELECT') {
 						e.preventDefault();
-						$.fancybox[ e.keyCode == 37 ? 'prev' : 'next']();
+						$.flybox[ e.keyCode == 37 ? 'prev' : 'next']();
 					}
 				});
 			}
@@ -581,28 +581,28 @@
 			_set_navigation();
 	
 			if (currentOpts.hideOnContentClick)	{
-				content.bind('click', $.fancybox.close);
+				content.bind('click', $.flybox.close);
 			}
 
 			if (currentOpts.hideOnOverlayClick)	{
-				overlay.bind('click', $.fancybox.close);
+				overlay.bind('click', $.flybox.close);
 			}
 
-			$(window).bind("resize.fb", $.fancybox.resize);
+			$(window).bind("resize.fb", $.flybox.resize);
 
 			if (currentOpts.centerOnScroll) {
-				$(window).bind("scroll.fb", $.fancybox.center);
+				$(window).bind("scroll.fb", $.flybox.center);
 			}
 
 			if (currentOpts.type == 'iframe') {
-				$('<iframe id="fancybox-frame" name="fancybox-frame' + new Date().getTime() + '" frameborder="0" hspace="0" ' + ($.browser.msie ? 'allowtransparency="true""' : '') + ' scrolling="' + selectedOpts.scrolling + '" src="' + currentOpts.href + '"></iframe>').appendTo(content);
+				$('<iframe id="flybox-frame" name="flybox-frame' + new Date().getTime() + '" frameborder="0" hspace="0" ' + ($.browser.msie ? 'allowtransparency="true""' : '') + ' scrolling="' + selectedOpts.scrolling + '" src="' + currentOpts.href + '"></iframe>').appendTo(content);
 			}
 
 			wrap.show();
 
 			busy = false;
 
-			$.fancybox.center();
+			$.flybox.center();
 
 			currentOpts.onComplete(currentArray, currentIndex, currentOpts);
 
@@ -765,13 +765,13 @@
 	 * Public methods 
 	 */
 
-	$.fn.fancybox = function(options) {
+	$.fn.flybox = function(options) {
 		if (!$(this).length) {
 			return this;
 		}
 
 		$(this)
-			.data('fancybox', $.extend({}, options, ($.metadata ? $(this).metadata() : {})))
+			.data('flybox', $.extend({}, options, ($.metadata ? $(this).metadata() : {})))
 			.unbind('click.fb')
 			.bind('click.fb', function(e) {
 				e.preventDefault();
@@ -805,7 +805,7 @@
 		return this;
 	};
 
-	$.fancybox = function(obj) {
+	$.flybox = function(obj) {
 		var opts;
 
 		if (busy) {
@@ -821,9 +821,9 @@
 		if ($.isArray(obj)) {
 			for (var i = 0, j = obj.length; i < j; i++) {
 				if (typeof obj[i] == 'object') {
-					$(obj[i]).data('fancybox', $.extend({}, opts, obj[i]));
+					$(obj[i]).data('flybox', $.extend({}, opts, obj[i]));
 				} else {
-					obj[i] = $({}).data('fancybox', $.extend({content : obj[i]}, opts));
+					obj[i] = $({}).data('flybox', $.extend({content : obj[i]}, opts));
 				}
 			}
 
@@ -831,9 +831,9 @@
 
 		} else {
 			if (typeof obj == 'object') {
-				$(obj).data('fancybox', $.extend({}, opts, obj));
+				$(obj).data('flybox', $.extend({}, opts, obj));
 			} else {
-				obj = $({}).data('fancybox', $.extend({content : obj}, opts));
+				obj = $({}).data('flybox', $.extend({content : obj}, opts));
 			}
 
 			selectedArray.push(obj);
@@ -846,26 +846,26 @@
 		_start();
 	};
 
-	$.fancybox.showActivity = function() {
+	$.flybox.showActivity = function() {
 		clearInterval(loadingTimer);
 
 		loading.show();
 		loadingTimer = setInterval(_animate_loading, 66);
 	};
 
-	$.fancybox.hideActivity = function() {
+	$.flybox.hideActivity = function() {
 		loading.hide();
 	};
 
-	$.fancybox.next = function() {
-		return $.fancybox.pos( currentIndex + 1);
+	$.flybox.next = function() {
+		return $.flybox.pos( currentIndex + 1);
 	};
 
-	$.fancybox.prev = function() {
-		return $.fancybox.pos( currentIndex - 1);
+	$.flybox.prev = function() {
+		return $.flybox.pos( currentIndex - 1);
 	};
 
-	$.fancybox.pos = function(pos) {
+	$.flybox.pos = function(pos) {
 		if (busy) {
 			return;
 		}
@@ -886,14 +886,14 @@
 		return;
 	};
 
-	$.fancybox.cancel = function() {
+	$.flybox.cancel = function() {
 		if (busy) {
 			return;
 		}
 
 		busy = true;
 
-		$.event.trigger('fancybox-cancel');
+		$.event.trigger('flybox-cancel');
 
 		_abort();
 
@@ -902,8 +902,8 @@
 		busy = false;
 	};
 
-	// Note: within an iframe use - parent.$.fancybox.close();
-	$.fancybox.close = function() {
+	// Note: within an iframe use - parent.$.flybox.close();
+	$.flybox.close = function() {
 		if (busy || wrap.is(':hidden')) {
 			return;
 		}
@@ -938,7 +938,7 @@
 			title.empty().hide();
 			wrap.hide();
 
-			$.event.trigger('fancybox-cleanup');
+			$.event.trigger('flybox-cleanup');
 
 			content.empty();
 
@@ -983,15 +983,15 @@
 		}
 	};
 
-	$.fancybox.resize = function() {
+	$.flybox.resize = function() {
 		if (overlay.is(':visible')) {
 			overlay.css('height', $(document).height());
 		}
 
-		$.fancybox.center(true);
+		$.flybox.center(true);
 	};
 
-	$.fancybox.center = function() {
+	$.flybox.center = function() {
 		var view, align;
 
 		if (busy) {
@@ -1013,39 +1013,39 @@
 			}, typeof arguments[0] == 'number' ? arguments[0] : 200);
 	};
 
-	$.fancybox.init = function() {
-		if ($("#fancybox-wrap").length) {
+	$.flybox.init = function() {
+		if ($("#flybox-wrap").length) {
 			return;
 		}
 
 		$('body').append(
-			tmp	= $('<div id="fancybox-tmp"></div>'),
-			loading	= $('<div id="fancybox-loading"></div>'),
-			overlay	= $('<div id="fancybox-overlay"></div>'),
-			wrap = $('<div id="fancybox-wrap"></div>')
+			tmp	= $('<div id="flybox-tmp"></div>'),
+			loading	= $('<div id="flybox-loading"></div>'),
+			overlay	= $('<div id="flybox-overlay"></div>'),
+			wrap = $('<div id="flybox-wrap"></div>')
 		);
 
-		outer = $('<div id="fancybox-outer"></div>')
+		outer = $('<div id="flybox-outer"></div>')
 			.appendTo( wrap );
 
 		outer.append(
-			content = $('<div id="fancybox-content"></div>'),
-			close = $('<a id="fancybox-close"></a>'),
-			title = $('<div id="fancybox-title"></div>'),
+			content = $('<div id="flybox-content"></div>'),
+			close = $('<a id="flybox-close"></a>'),
+			title = $('<div id="flybox-title"></div>'),
 
-			nav_left = $('<div id="fancybox-left"><span></span></div>'),
-			nav_right = $('<div id="fancybox-right"><span></span></div>')
+			nav_left = $('<div id="flybox-left"><span></span></div>'),
+			nav_right = $('<div id="flybox-right"><span></span></div>')
 		);
 
-		close.click($.fancybox.close);
-		loading.click($.fancybox.cancel);
+		close.click($.flybox.close);
+		loading.click($.flybox.cancel);
 
 		nav_left.click(function(e) {
-			$.fancybox.prev();
+			$.flybox.prev();
 		});
 
 		nav_right.click(function(e) {
-			$.fancybox.next();
+			$.flybox.next();
 		});
 
 		if ($.fn.mousewheel) {
@@ -1055,13 +1055,13 @@
 
 				} else if ($(e.target).get(0).clientHeight == 0 || $(e.target).get(0).scrollHeight === $(e.target).get(0).clientHeight) {
 					e.preventDefault();
-					$.fancybox[ delta > 0 ? 'prev' : 'next']();
+					$.flybox[ delta > 0 ? 'prev' : 'next']();
 				}
 			});
 		}
 	};
 
-	$.fn.fancybox.defaults = {
+	$.fn.flybox.defaults = {
 		padding : 10,
 		margin : 40,
 		opacity : false,
@@ -1117,7 +1117,7 @@
 	};
 
 	$(document).ready(function() {
-		$.fancybox.init();
+		$.flybox.init();
 	});
 
 })(jQuery);
