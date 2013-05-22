@@ -572,7 +572,7 @@
 			}
 
 			if (currentOpts.type == 'iframe') {
-				$('<iframe id="flybox-frame" name="flybox-frame' + new Date().getTime() + '" frameborder="0" hspace="0" ' + ($.browser.msie ? 'allowtransparency="true""' : '') + ' scrolling="' + selectedOpts.scrolling + '" src="' + currentOpts.href + '"></iframe>').appendTo(content);
+				$('<iframe id="flybox-frame" name="flybox-frame' + new Date().getTime() + '" frameborder="0" hspace="0" scrolling="' + selectedOpts.scrolling + '" src="' + currentOpts.href + '"></iframe>').appendTo(content);
 			}
 
 			wrap.show();
