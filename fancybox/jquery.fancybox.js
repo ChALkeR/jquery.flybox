@@ -1,14 +1,12 @@
 /*
- * FancyBox - jQuery Plugin
- * Simple and fancy lightbox alternative
- *
- * Examples and documentation at: http://fancybox.net
+ * FlyBox - jQuery Plugin
  *
  * Copyright (c) 2008 - 2010 Janis Skarnelis
  * That said, it is hardly a one-person project. Many people have submitted bugs, code, and offered their advice freely. Their support is greatly appreciated.
+ * Copyright (c) 2013 Nikita Skovoroda
  *
- * Version: 1.3.4 (11/11/2010)
- * Requires: jQuery v1.3+
+ * Version: devel
+ * Requires: jQuery v1.3+ (TODO: check version requirements)
  *
  * Dual licensed under the MIT and GPL licenses:
  *   http://www.opensource.org/licenses/mit-license.php
