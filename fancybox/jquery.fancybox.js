@@ -453,7 +453,7 @@
 
 		_format_title = function(title) {
 			if (title && title.length) {
-				return '<div id="fancybox-title-' + currentOpts.titlePosition + '">' + title + '</div>';
+				return $('<div id="fancybox-title-' + currentOpts.titlePosition + '"></div>').text(title);
 			}
 			return false;
 		},
@@ -472,16 +472,16 @@
 				return;
 			}
 
-			titleStr = $.isFunction(currentOpts.titleFormat) ? currentOpts.titleFormat(titleStr, currentArray, currentIndex, currentOpts) : _format_title(titleStr);
+			titleElement = $.isFunction(currentOpts.titleFormat) ? currentOpts.titleFormat(titleStr, currentArray, currentIndex, currentOpts) : _format_title(titleStr);
 
-			if (!titleStr || titleStr === '') {
+			if (!titleElement) {
 				title.hide();
 				return;
 			}
 
 			title
 				.addClass('fancybox-title-' + currentOpts.titlePosition)
-				.html( titleStr )
+				.append( titleElement )
 				.appendTo( 'body' )
 				.show();
 
