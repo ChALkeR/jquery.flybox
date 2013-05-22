@@ -18,7 +18,7 @@
 
 		selectedIndex = 0, selectedOpts = {}, selectedArray = [], currentIndex = 0, currentOpts = {}, currentArray = [],
 
-		ajaxLoader = null, imgPreloader = new Image(), imgRegExp = /\.(jpg|gif|png|bmp|jpeg)(.*)?$/i, swfRegExp = /[^\.]\.(swf)\s*$/i,
+		ajaxLoader = null, imgPreloader = new Image(), imgRegExp = /\.(jpg|gif|png|bmp|jpeg)(.*)?$/i,
 
 		loadingTimer, loadingFrame = 1,
 
@@ -62,8 +62,6 @@
 				href, 
 				type, 
 				title,
-				str,
-				emb,
 				ret;
 
 			_abort();
@@ -108,9 +106,6 @@
 			} else if (href) {
 				if (href.match(imgRegExp)) {
 					type = 'image';
-
-				} else if (href.match(swfRegExp)) {
-					type = 'swf';
 
 				} else if ($(obj).hasClass("iframe")) {
 					type = 'iframe';
@@ -209,24 +204,6 @@
 					};
 
 					imgPreloader.src = href;
-				break;
-
-				case 'swf':
-					selectedOpts.scrolling = 'no';
-
-					str = '<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="' + selectedOpts.width + '" height="' + selectedOpts.height + '"><param name="movie" value="' + href + '"></param>';
-					emb = '';
-
-					$.each(selectedOpts.swf, function(name, val) {
-						str += '<param name="' + name + '" value="' + val + '"></param>';
-						emb += ' ' + name + '="' + val + '"';
-					});
-
-					str += '<embed src="' + href + '" type="application/x-shockwave-flash" width="' + selectedOpts.width + '" height="' + selectedOpts.height + '"' + emb + '></embed></object>';
-
-					tmp.html(str);
-
-					_process_inline();
 				break;
 
 				case 'ajax':
@@ -682,7 +659,7 @@
 			}
 
 			if (resize && (to.width > view[0] || to.height > view[1])) {
-				if (selectedOpts.type == 'image' || selectedOpts.type == 'swf') {
+				if (selectedOpts.type == 'image') {
 					ratio = (currentOpts.width ) / (currentOpts.height );
 
 					if ((to.width ) > view[0]) {
@@ -1077,7 +1054,6 @@
 		centerOnScroll : false,
 
 		ajax : {},
-		swf : { wmode: 'transparent' },
 
 		hideOnOverlayClick : true,
 		hideOnContentClick : false,
