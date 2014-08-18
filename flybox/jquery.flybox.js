@@ -314,7 +314,6 @@
 				$.event.trigger('flybox-change');
 
 				content	.empty()
-					.removeAttr('filter')
 					.css({
 						'border-width' : currentOpts.padding,
 						'width'	: final_pos.width - currentOpts.padding * 2,
@@ -470,11 +469,6 @@
 	};
 
 	var _finish = function () {
-		if (!$.support.opacity) {
-			content.get(0).style.removeAttribute('filter');
-			wrap.get(0).style.removeAttribute('filter');
-		}
-
 		if (selectedOpts.autoDimensions) {
 			content.css('height', 'auto');
 		}
