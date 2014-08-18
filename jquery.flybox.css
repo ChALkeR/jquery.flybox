@@ -5,7 +5,7 @@
  * That said, it is hardly a one-person project. Many people have submitted bugs, code, and offered their advice freely. Their support is greatly appreciated.
  * Copyright (c) 2013 - 2014 Nikita Skovoroda
  *
- * Version: devel
+ * Version: 0.1
  * Requires: jQuery v1.3+ (TODO: check version requirements)
  *
  * Dual licensed under the MIT and GPL licenses:
