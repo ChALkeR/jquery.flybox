@@ -16,7 +16,7 @@
 ;(function($) {
 	var	tmp, loading, overlay, wrap, outer, content, close, title, nav_left, nav_right,
 		selectedIndex = 0, selectedOpts = {}, selectedArray = [], currentIndex = 0, currentOpts = {}, currentArray = [],
-		ajaxLoader = null, imgPreloader = new Image(), imgRegExp = /\.(jpg|gif|png|bmp|jpeg)(.*)?$/i,
+		ajaxLoader = null, imgPreloader = new Image(),
 		loadingTimer, loadingFrame = 1,
 		titleHeight = 0, titleStr = '', start_pos, final_pos, busy = false, fx = $.extend($('<div/>')[0], { prop: 0 });
 
@@ -82,7 +82,7 @@
 		} else if (selectedOpts.content) {
 			type = 'html';
 		} else if (href) {
-			if (href.match(imgRegExp)) {
+			if (href.match(selectedOpts.imageRegExp)) {
 				type = 'image';
 			} else if ($(obj).hasClass("iframe")) {
 				type = 'iframe';
@@ -942,6 +942,8 @@
 		showNavArrows : true,
 		enableEscapeButton : true,
 		enableKeyboardNav : true,
+
+		imageRegExp: /\.(jpg|gif|png|bmp|jpeg)(.*)?$/i,
 
 		onStart : function(){},
 		onCancel : function(){},
