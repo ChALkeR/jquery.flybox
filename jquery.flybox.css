@@ -3,7 +3,7 @@
  *
  * Copyright (c) 2008 - 2010 Janis Skarnelis
  * That said, it is hardly a one-person project. Many people have submitted bugs, code, and offered their advice freely. Their support is greatly appreciated.
- * Copyright (c) 2013 - 2014 Nikita Skovoroda
+ * Copyright (c) 2013 - 2015 Nikita Skovoroda
  *
  * Version: 0.1
  * Requires: jQuery v1.3+ (TODO: check version requirements)
