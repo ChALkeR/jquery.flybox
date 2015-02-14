@@ -515,7 +515,7 @@
 		if ((currentArray.length -1) > currentIndex) {
 			href = currentArray[ currentIndex + 1 ].href;
 
-			if (typeof href !== 'undefined' && href.match(imgRegExp)) {
+			if (typeof href !== 'undefined' && href.match(selectedOpts.imageRegExp)) {
 				objNext = new Image();
 				objNext.src = href;
 			}
@@ -523,7 +523,7 @@
 		if (currentIndex > 0) {
 			href = currentArray[ currentIndex - 1 ].href;
 
-			if (typeof href !== 'undefined' && href.match(imgRegExp)) {
+			if (typeof href !== 'undefined' && href.match(selectedOpts.imageRegExp)) {
 				objNext = new Image();
 				objNext.src = href;
 			}
